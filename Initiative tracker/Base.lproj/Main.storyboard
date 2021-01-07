@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,9 +26,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="nmD-79-eZD" kind="presentation" identifier="characterList" id="TTh-Sp-fjQ"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -38,10 +36,13 @@
                     <navigationItem key="navigationItem" title="Initiative Trackers" id="qFN-IM-SRe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tBY-jK-hki">
                             <connections>
-                                <segue destination="U5O-C0-Sm8" kind="presentation" id="SmI-hr-r3v"/>
+                                <segue destination="x2J-w6-8gN" kind="show" id="ukd-4P-QrX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="wU3-UB-fNf" kind="show" identifier="trackerDetail" id="uL4-Lh-mRU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63L-pj-xoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,34 +87,18 @@
                             <outlet property="delegate" destination="HUT-WT-Gh6" id="fMF-zD-hrO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Characters" id="jxb-0e-NQf"/>
+                    <navigationItem key="navigationItem" title="Characters" id="jxb-0e-NQf">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="SuZ-MW-kpJ"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ujr-6t-RDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="191"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UYC-zr-yzQ">
-            <objects>
-                <navigationController id="nmD-79-eZD" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tr1-XI-QXh">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="HUT-WT-Gh6" kind="relationship" relationship="rootViewController" id="v9g-WE-gNJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XFO-ug-BON" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1725" y="191"/>
+            <point key="canvasLocation" x="2352" y="161"/>
         </scene>
         <!--New Initiative Tracker-->
         <scene sceneID="10d-Z2-0sz">
             <objects>
-                <exit id="Hed-UX-TNs" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhA-rV-HCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController title="New Initiative Tracker" id="x2J-w6-8gN" customClass="TrackerDetailTableViewController" customModule="Initiative_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="New Initiative Tracker" id="x2J-w6-8gN" customClass="EditTrackerTableViewController" customModule="Initiative_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IbA-R9-DvZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,24 +157,10 @@
                         <outlet property="trackerNameTextField" destination="hqf-MP-2ch" id="H3W-ZU-33P"/>
                     </connections>
                 </tableViewController>
+                <exit id="Hed-UX-TNs" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhA-rV-HCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733" y="-531"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mcn-5N-Ysb">
-            <objects>
-                <navigationController id="U5O-C0-Sm8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccs-al-geI">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="x2J-w6-8gN" kind="relationship" relationship="rootViewController" id="0dK-rY-iLF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hwg-2N-z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1725" y="-530"/>
+            <point key="canvasLocation" x="1451" y="-538"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TPW-Oa-rAe">
@@ -206,6 +177,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywc-BI-RL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-368" y="161"/>
+        </scene>
+        <!--Tracker Detail-->
+        <scene sceneID="bxo-NI-cDq">
+            <objects>
+                <viewController title="Tracker Detail" id="wU3-UB-fNf" customClass="TrackerDetailViewController" customModule="Initiative_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Obe-hM-js6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-Xg-ewv">
+                                <rect key="frame" x="0.0" y="116" width="414" height="620"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPY-tE-abe">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307.66666666666669"/>
+                                        <state key="normal" title="Characters"/>
+                                        <connections>
+                                            <action selector="characterButtonOnClick:" destination="wU3-UB-fNf" eventType="touchUpInside" id="BZQ-kZ-fXz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HL9-uU-Tpp">
+                                        <rect key="frame" x="0.0" y="312.66666666666674" width="414" height="307.33333333333326"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="h0y-Xg-ewv" firstAttribute="leading" secondItem="fkJ-lG-vfD" secondAttribute="leading" id="6zk-no-jL8"/>
+                            <constraint firstItem="h0y-Xg-ewv" firstAttribute="top" secondItem="fkJ-lG-vfD" secondAttribute="top" id="JDS-fS-zfE"/>
+                            <constraint firstItem="fkJ-lG-vfD" firstAttribute="bottom" secondItem="h0y-Xg-ewv" secondAttribute="bottom" id="b8f-oS-orN"/>
+                            <constraint firstItem="fkJ-lG-vfD" firstAttribute="trailing" secondItem="h0y-Xg-ewv" secondAttribute="trailing" id="opU-LU-0Xm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fkJ-lG-vfD"/>
+                    </view>
+                    <connections>
+                        <segue destination="HUT-WT-Gh6" kind="show" identifier="characterList" id="4FI-dc-Hfo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="deJ-4U-sZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HTH-Pd-9gW">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="1451" y="161"/>
         </scene>
     </scenes>
 </document>

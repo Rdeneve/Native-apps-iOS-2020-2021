@@ -28,4 +28,8 @@ class CharacterTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func unwindToTrackerList(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
 }

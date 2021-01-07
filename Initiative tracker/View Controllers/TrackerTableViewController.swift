@@ -46,29 +46,26 @@ class TrackerTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let row = indexPath.row
+        performSegue(withIdentifier: "trackerDetail", sender: trackers[row])
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editTracker",
-            let navController = segue.destination as? UINavigationController,
-            let editTrackerController = navController.topViewController as? TrackerDetailTableViewController {
-            
-                let indexPath = tableView.indexPathForSelectedRow!
-                let selectedTracker = trackers[indexPath.row]
-                editTrackerController.tracker = selectedTracker
-        } else if segue.identifier == "characterList",
-            let navController = segue.destination as? UINavigationController,
-            let characterListController = navController.topViewController as? CharacterTableViewController {
-            
-                let indexPath = tableView.indexPathForSelectedRow!
-                let selectedTracker = trackers[indexPath.row]
-                characterListController.characters = selectedTracker.characters
+        if segue.identifier == "trackerDetail", let tracker = sender as? Tracker {
+            let viewController = segue.destination as! TrackerDetailViewController
+            viewController.tracker = tracker
+            viewController.title = tracker.name
         }
     
     }
     
+    
     @IBAction func unwindToTrackerList(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind" else { return }
-        let sourceViewController = segue.source as! TrackerDetailTableViewController
+        let sourceViewController = segue.source as! EditTrackerTableViewController
         
         if let tracker = sourceViewController.tracker {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {

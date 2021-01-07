@@ -1,5 +1,5 @@
 //
-//  TrackerDetailTableViewController.swift
+//  EditTrackerTableViewController: .swift
 //  Initiative tracker
 //
 //  Created by Robbe De Neve on 26/12/2020.
@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class TrackerDetailTableViewController: UITableViewController {
+class EditTrackerTableViewController: UITableViewController {
     
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var trackerNameTextField: UITextField!
