@@ -15,10 +15,12 @@ class CharacterTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    // aantal rijen per sectie
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
     
+    // content van individuele cell specifiëren
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath)
         let character = characters[indexPath.row]
@@ -28,8 +30,42 @@ class CharacterTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func unwindToTrackerList(unwindSegue: UIStoryboardSegue) {
+    // swipe-to-delete enablen
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // functionaliteit swipe-to-delete specifiëren
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            characters.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "editCharacter", let editCharViewController = segue.destination as? EditCharacterTableViewController {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedChar = characters[indexPath.row]
+            editCharViewController.char = selectedChar
+        }
+    }
+    
+    @IBAction func unwindToCharacterList(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveCharacter" else { return }
+        let sourceViewController = segue.source as! EditCharacterTableViewController
         
+        if let char = sourceViewController.char {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                characters[selectedIndexPath.row] = char
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: characters.count, section: 0)
+                characters.append(char)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
     }
     
 }

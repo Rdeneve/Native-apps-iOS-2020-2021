@@ -17,7 +17,7 @@ class EditTrackerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tracker = tracker {
-            navigationItem.title = "Tracker"
+            navigationItem.title = "Edit Tracker"
             trackerNameTextField.text = tracker.name
         }
         updateSaveButton()
@@ -30,10 +30,9 @@ class EditTrackerTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
         guard segue.identifier == "saveUnwind" else { return }
-        let trackerName = trackerNameTextField.text!
         
+        let trackerName = trackerNameTextField.text!
         tracker = Tracker(name: trackerName)
     }
     

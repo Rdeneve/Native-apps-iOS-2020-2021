@@ -17,13 +17,17 @@ class TrackerDetailViewController: UIViewController {
     }    
     
     @IBAction func characterButtonOnClick(_ sender: Any) {
-        performSegue(withIdentifier: "characterList", sender: self.tracker)
+        performSegue(withIdentifier: "characterList", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "characterList", let tracker = sender as? Tracker {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "characterList" {
             let viewController = segue.destination as! CharacterTableViewController
-            viewController.characters = tracker.characters
+            viewController.characters = tracker!.characters
+        } else if segue.identifier == "editTracker" {
+            let viewController = segue.destination as! EditTrackerTableViewController
+            viewController.tracker = self.tracker
         }
     }
     

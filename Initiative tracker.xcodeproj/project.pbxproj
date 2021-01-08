@@ -18,6 +18,7 @@
 		1491CEFB2580E15C003B6DEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1491CEFA2580E15C003B6DEB /* Assets.xcassets */; };
 		1491CEFE2580E15C003B6DEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1491CEFC2580E15C003B6DEB /* LaunchScreen.storyboard */; };
 		14A3BBDB2597A45400D47427 /* EditTrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3BBDA2597A45400D47427 /* EditTrackerTableViewController.swift */; };
+		14DBCBCA25A88E1B00146091 /* EditCharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DBCBC925A88E1B00146091 /* EditCharacterTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1491CEFD2580E15C003B6DEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1491CEFF2580E15C003B6DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14A3BBDA2597A45400D47427 /* EditTrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrackerTableViewController.swift; sourceTree = "<group>"; };
+		14DBCBC925A88E1B00146091 /* EditCharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCharacterTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +54,9 @@
 			children = (
 				1413C37425920CDD008B0494 /* TrackerTableViewController.swift */,
 				14590BCD25A765E500BCCE49 /* TrackerDetailViewController.swift */,
-				14A3BBDA2597A45400D47427 /* EditTrackerTableViewController.swift */,
 				1478D96E2598E220006FBEA5 /* CharacterTableViewController.swift */,
+				14A3BBDA2597A45400D47427 /* EditTrackerTableViewController.swift */,
+				14DBCBC925A88E1B00146091 /* EditCharacterTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				1413C3692591FA83008B0494 /* Tracker.swift in Sources */,
 				1413C36F2591FCC1008B0494 /* Character.swift in Sources */,
 				14590BCE25A765E500BCCE49 /* TrackerDetailViewController.swift in Sources */,
+				14DBCBCA25A88E1B00146091 /* EditCharacterTableViewController.swift in Sources */,
 				1491CEF42580E15B003B6DEB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

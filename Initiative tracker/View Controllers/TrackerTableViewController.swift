@@ -26,6 +26,7 @@ class TrackerTableViewController: UITableViewController {
         return trackers.count
     }
     
+    // content van individuele cell specifiëren
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackerCell", for: indexPath)
         let tracker = trackers[indexPath.row]
@@ -46,14 +47,14 @@ class TrackerTableViewController: UITableViewController {
         }
     }
     
+    // segue naar volgende scherm door op rij te klikken
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         performSegue(withIdentifier: "trackerDetail", sender: trackers[row])
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == "trackerDetail", let tracker = sender as? Tracker {
             let viewController = segue.destination as! TrackerDetailViewController
             viewController.tracker = tracker
@@ -73,7 +74,6 @@ class TrackerTableViewController: UITableViewController {
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
                 let newIndexPath = IndexPath(row: trackers.count, section: 0)
-                
                 trackers.append(tracker)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
                 
