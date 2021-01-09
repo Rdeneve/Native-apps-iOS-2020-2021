@@ -26,11 +26,8 @@ class EditCharacterTableViewController: UITableViewController {
             initiativeModTextField.text = String(char.initiativeModifier)
             
         } else if let char = char {
-            print(char.initiative)
             navigationItem.title = "Editing Character"
             pcSwitch.isOn = false
-            print(char.name)
-            print(char.initiative)
             charNameTextField.text = char.name
             hitpointsTextField.text = String(char.hitpoints)
             initiativeTextField.text = String(char.initiative)

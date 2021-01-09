@@ -15,6 +15,12 @@ class CharacterTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func willMove(toParent parent: UIViewController?) {
+        if let parent = parent as? TrackerDetailViewController {
+            parent.tracker?.characters = characters
+        }
+    }
+    
     // aantal rijen per sectie
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
@@ -22,11 +28,16 @@ class CharacterTableViewController: UITableViewController {
     
     // content van individuele cell specifiëren
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterTableCell
         let character = characters[indexPath.row]
-        cell.textLabel?.text = character.name
-        cell.detailTextLabel?.text = "Initiative:" + "\(character.initiative)"
+        cell.characterNameLabel?.text = character.name
+        cell.characterInitiativeLabel?.text = "\(character.initiative)"
         
+        if character is PlayerCharacter {
+            cell.characterTypeLabel?.text = "Player Character"
+        } else {
+            cell.characterTypeLabel?.text = "DM Character"
+        }
         return cell
     }
     
@@ -41,6 +52,10 @@ class CharacterTableViewController: UITableViewController {
             characters.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,4 +83,10 @@ class CharacterTableViewController: UITableViewController {
         }
     }
     
+}
+
+class CharacterTableCell: UITableViewCell {
+    @IBOutlet weak var characterNameLabel: UILabel!
+    @IBOutlet weak var characterTypeLabel: UILabel!
+    @IBOutlet weak var characterInitiativeLabel: UILabel!
 }

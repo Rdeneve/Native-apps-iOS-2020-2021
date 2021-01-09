@@ -33,7 +33,12 @@ class EditTrackerTableViewController: UITableViewController {
         guard segue.identifier == "saveUnwind" else { return }
         
         let trackerName = trackerNameTextField.text!
-        tracker = Tracker(name: trackerName)
+        if let tracker = tracker {
+            self.tracker = Tracker(name: trackerName, characters: tracker.characters)
+        } else {
+            tracker = Tracker(name: trackerName, characters: nil)
+        }
+        
     }
     
     @IBAction func textChanged(_ sender: Any) {

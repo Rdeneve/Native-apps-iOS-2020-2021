@@ -15,7 +15,7 @@ class TrackerTableViewController: UITableViewController {
         if let savedTrackers = Tracker.loadData() {
             trackers = savedTrackers
         } else {
-            trackers = Tracker.loadDummyData();
+            trackers = Tracker.loadDummyData()
         }
         navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -44,6 +44,7 @@ class TrackerTableViewController: UITableViewController {
         if editingStyle == .delete {
             trackers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            Tracker.saveData(trackers)
         }
     }
     
@@ -79,5 +80,6 @@ class TrackerTableViewController: UITableViewController {
                 
             }
         }
+        Tracker.saveData(trackers)
     }
 }

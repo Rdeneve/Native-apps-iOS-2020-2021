@@ -6,7 +6,7 @@
 //  Copyright © 2020 Robbe De Neve. All rights reserved.
 //
 
-class Character {
+class Character: Codable {
     var name: String
     var hitpoints: Int
     var initiative: Int
