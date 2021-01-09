@@ -1,0 +1,11 @@
+{
+  "commitish" : "f08ec93c299a221210e59462c84c79410050e5b7",
+  "iOS" : [
+    {
+      "hash" : "6386205bae6609fdd21a3940f62f53afdfafd294c167733a5686960dc281110a",
+      "name" : "SCLAlertView",
+      "linking" : "dynamic",
+      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+    }
+  ]
+}
